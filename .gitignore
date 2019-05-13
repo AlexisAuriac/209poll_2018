@@ -1,0 +1,9 @@
+# binary
+209poll
+
+# stack
+.stack-work
+
+# sublime-text
+*.sublime-project
+*.sublime-workspace
