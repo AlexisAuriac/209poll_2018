@@ -27,7 +27,8 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Utility
+      ProcessArgv
   other-modules:
       Paths_209poll
   hs-source-dirs:
