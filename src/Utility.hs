@@ -29,6 +29,7 @@ isFloat xs = isUFloat xs
 
 isUFloat :: String -> Bool
 isUFloat "" = False
+isUFloat ('.':_) = False
 isUFloat xs = isUFloat' xs
 
 isUFloat' :: String -> Bool
