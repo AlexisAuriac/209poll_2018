@@ -29,6 +29,7 @@ library
   exposed-modules:
       Utility
       ProcessArgv
+      Interval
   other-modules:
       Paths_209poll
   hs-source-dirs:
