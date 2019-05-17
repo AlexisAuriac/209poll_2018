@@ -23,6 +23,7 @@ processArgv = do
     progName <- getProgName
     return $ processArgv' argv progName
 processArgv' :: [String] -> String -> Arguments
+
 processArgv' argv progName
     | length argv /= 3 = error $ usage progName
     | (not (isUInt (argv !! 0))) || sizeP == 0 = error "pSize must be an unsigned integer superior to 0"

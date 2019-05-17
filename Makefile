@@ -14,4 +14,7 @@ $(NAME):
 	stack build
 	cp `stack path --local-install-root`/bin/$(NAME) .
 
-.PHONY:	all $(NAME)
+test:
+	stack test
+
+.PHONY:	all $(NAME) test

@@ -2,8 +2,8 @@ module Utility (
     allElemsOf,
     isUInt,
     isInt,
-    isFloat,
     isUFloat,
+    isFloat,
     printList
 ) where
 
@@ -17,15 +17,8 @@ isUInt xs = allElemsOf xs "0123456789"
 
 isInt :: String -> Bool
 isInt "" = False
-isInt (x:xs)
-    | x == '-' = allElemsOf xs digits
-    | otherwise = allElemsOf (x:xs) digits
-    where digits = "0123456789"
-
-isFloat :: String -> Bool
-isFloat "" = False
-isFloat ('-':xs) = isUFloat xs
-isFloat xs = isUFloat xs
+isInt ('-':xs) = isUInt xs
+isInt xs = isUInt xs
 
 isUFloat :: String -> Bool
 isUFloat "" = False
@@ -34,10 +27,15 @@ isUFloat xs = isUFloat' xs
 
 isUFloat' :: String -> Bool
 isUFloat' "" = True
+isUFloat' ('.':xs) = isUInt xs
 isUFloat' (x:xs)
-    | x == '.' = isUInt xs
     | x `elem` "0123456789" = isUFloat' xs
     | otherwise = False
+
+isFloat :: String -> Bool
+isFloat "" = False
+isFloat ('-':xs) = isUFloat xs
+isFloat xs = isUFloat xs
 
 printList :: (Show a) => [a] -> (a -> IO ()) -> IO ()
 printList [] _ = return ()
