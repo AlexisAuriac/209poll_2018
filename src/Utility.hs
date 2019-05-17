@@ -9,7 +9,8 @@ module Utility (
 
 allElemsOf :: (Eq a) => [a] -> [a] -> Bool
 allElemsOf [] _ = True
-allElemsOf (c:xs) src = c `elem` src && (allElemsOf xs src)
+allElemsOf xs src = foldr (&&) True inSrc
+    where inSrc = map (`elem` src) xs
 
 isUInt :: String -> Bool
 isUInt "" = False
