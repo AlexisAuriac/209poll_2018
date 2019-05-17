@@ -15,9 +15,21 @@ testAllElemsOf = hspec $ do
             allElemsOf "" "any" `shouldBe` (True :: Bool)
             allElemsOf "" "" `shouldBe` (True :: Bool)
 
-        it "returns True if the list is empty" $ do
-            allElemsOf "" "any" `shouldBe` (True :: Bool)
-            allElemsOf "" "" `shouldBe` (True :: Bool)
+        it "returns True if the list is only composed of elements in the source" $ do
+            allElemsOf "aaaaa" "abc" `shouldBe` (True :: Bool)
+            allElemsOf "b" "abc" `shouldBe` (True :: Bool)
+            allElemsOf "bca" "abc" `shouldBe` (True :: Bool)
+            allElemsOf "c" "abc" `shouldBe` (True :: Bool)
+            allElemsOf "acbbabcbabcabcbabc" "abc" `shouldBe` (True :: Bool)
+            allElemsOf [1,4,7,3,3,6,2,7,9,7,2,0] [0..9] `shouldBe` (True :: Bool)
+
+        it "returns False if the list isn't only composed of elements in the source" $ do
+            allElemsOf "aaaaad" "abc" `shouldBe` (False :: Bool)
+            allElemsOf "d" "abc" `shouldBe` (False :: Bool)
+            allElemsOf "a.bc" "abc" `shouldBe` (False :: Bool)
+            allElemsOf "abcA" "abc" `shouldBe` (False :: Bool)
+            allElemsOf "acbb0abcbabcabcbabc" "abc" `shouldBe` (False :: Bool)
+            allElemsOf [10,4,7,3,3,6,2,7,9,7,2,0] [0..9] `shouldBe` (False :: Bool)
 
 testIsInt :: IO ()
 testIsInt = hspec $ do
@@ -101,6 +113,7 @@ testIsUFloat = hspec $ do
 
 testUtility :: IO ()
 testUtility = do
+    testAllElemsOf
     testIsUInt
     testIsInt
     testIsFloat
