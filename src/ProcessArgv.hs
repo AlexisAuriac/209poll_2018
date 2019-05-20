@@ -31,6 +31,7 @@ processArgv' argv progName
     | not $ isFloat (argv !! 2) = error "p must be a decimal number"
     | (p < 0) || (p > 100)  = error "p is a percentage, therefore it must be between 0 and 100"
     | (not (isFloat (argv !! 2))) || sizeS == 0 = error "sSize must an unsigned int superior to 0"
+    | sizeS > sizeP = error "sSize must be inferior or equal to sizeP"
     | otherwise = (sizeP, sizeS, p/100)
     where
         sizeP = read (argv !! 0) :: Int
