@@ -9,8 +9,8 @@ calcInterval :: Float -> Float -> Float -> (Float, Float)
 calcInterval p var mul = (minVal, maxVal)
     where
         diff = mul * (sqrt var)
-        minVal = p - diff
-        maxVal = p + diff
+        minVal = max (p - diff) 0
+        maxVal = min (p + diff) 1
 
 displayInterval :: Int -> (Float, Float) -> IO ()
 displayInterval confidence (minVal, maxVal) =
