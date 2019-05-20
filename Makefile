@@ -16,5 +16,6 @@ $(NAME):
 
 test:
 	stack test
+	./test.sh
 
 .PHONY:	all $(NAME) test
