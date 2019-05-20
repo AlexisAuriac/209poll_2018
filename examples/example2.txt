@@ -1,0 +1,6 @@
+Population size:		10000
+Sample size:			100
+Voting intentions:		45.00%
+Variance:			0.002450
+95% confidence interval:	[35.30%; 54.70%]
+99% confidence interval:	[32.23%; 57.77%]
