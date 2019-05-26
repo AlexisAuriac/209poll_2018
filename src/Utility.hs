@@ -8,8 +8,7 @@ module Utility (
 ) where
 
 allElemsOf :: (Eq a) => [a] -> [a] -> Bool
-allElemsOf [] _ = True
-allElemsOf xs src = foldr (&&) True inSrc
+allElemsOf xs src = and inSrc
     where inSrc = map (`elem` src) xs
 
 isUInt :: String -> Bool
