@@ -16,7 +16,6 @@ isUInt "" = False
 isUInt xs = allElemsOf xs "0123456789"
 
 isInt :: String -> Bool
-isInt "" = False
 isInt ('-':xs) = isUInt xs
 isInt xs = isUInt xs
 
@@ -33,7 +32,6 @@ isUFloat' (x:xs)
     | otherwise = False
 
 isFloat :: String -> Bool
-isFloat "" = False
 isFloat ('-':xs) = isUFloat xs
 isFloat xs = isUFloat xs
 
