@@ -8,8 +8,7 @@ module Utility (
 ) where
 
 allElemsOf :: (Eq a) => [a] -> [a] -> Bool
-allElemsOf xs src = and inSrc
-    where inSrc = map (`elem` src) xs
+allElemsOf xs src = all (`elem` src) xs
 
 isUInt :: String -> Bool
 isUInt "" = False
