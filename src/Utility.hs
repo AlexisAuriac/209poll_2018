@@ -3,8 +3,7 @@ module Utility (
     isUInt,
     isInt,
     isUFloat,
-    isFloat,
-    printList
+    isFloat
 ) where
 
 allElemsOf :: (Eq a) => [a] -> [a] -> Bool
@@ -33,9 +32,3 @@ isUFloat' (x:xs)
 isFloat :: String -> Bool
 isFloat ('-':xs) = isUFloat xs
 isFloat xs = isUFloat xs
-
-printList :: (Show a) => [a] -> (a -> IO ()) -> IO ()
-printList [] _ = return ()
-printList (x:xs) f = do
-    f x
-    printList xs f
